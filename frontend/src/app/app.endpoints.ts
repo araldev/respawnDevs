@@ -1,5 +1,5 @@
 export const API_ENDPOINTS = {
-  BASE_URL: 'http://localhost:8080/',
+  BASE_URL: 'http://localhost:8080',
   PLATOS: {
     LIST: '/recetas',
     DETAIL: (id: number) => `/recetas/${id}`,
