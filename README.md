@@ -81,7 +81,7 @@ Este proyecto ha sido desarrollado en equipo por:
 - Arturo Alba García  
 - Camila Bustelo Canobra  
 - Álvaro Fernández Barrero  
-- Alicia Contreras Constán  
+- Alicia Contreras Constán 
 
 ---
 
