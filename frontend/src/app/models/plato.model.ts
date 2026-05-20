@@ -20,6 +20,6 @@ export interface Plato {
   nombre: string;
   descripcion: string;
   precio: number;
-  alergenos: Alergeno[];
+  alergenos?: Alergeno[];
 }
 

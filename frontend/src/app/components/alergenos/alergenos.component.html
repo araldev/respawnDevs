@@ -1,0 +1,11 @@
+<section class="alergenos-section">
+  <h4 class="label-md">Información de Alérgenos</h4>
+  <div class="alergenos-grid">
+    @for (alergeno of listaAlergenos; track alergeno) {
+      <div class="alergeno-item" [title]="alergeno">
+        <span class="chip-dot"></span>
+        <span class="alergeno-name">{{ alergeno }}</span>
+      </div>
+    }
+  </div>
+</section>

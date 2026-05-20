@@ -1,0 +1,36 @@
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" formControlName="nombre" [class.invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched">
+    @if (form.get('nombre')?.invalid && form.get('nombre')?.touched) {
+      <div class="error-message">
+        El nombre es requerido.
+      </div>
+    }
+  </div>
+  <div>
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" formControlName="descripcion" [class.invalid]="form.get('descripcion')?.invalid && form.get('descripcion')?.touched"></textarea>
+    @if (form.get('descripcion')?.invalid && form.get('descripcion')?.touched) {
+      <div class="error-message">
+        La descripción es requerida.
+      </div>
+    }
+  </div>
+  <div>
+    <label for="precio">Precio:</label>
+    <input id="precio" type="number" formControlName="precio" [class.invalid]="form.get('precio')?.invalid && form.get('precio')?.touched">
+    @if (form.get('precio')?.errors?.['required'] && form.get('precio')?.touched) {
+      <div class="error-message">
+        El precio es requerido.
+      </div>
+    }
+    @if (form.get('precio')?.errors?.['min'] && form.get('precio')?.touched) {
+      <div class="error-message">
+        El precio no puede ser negativo.
+      </div>
+    }
+  </div>
+  <button type="submit" [disabled]="form.invalid">Añadir Plato</button>
+</form>
