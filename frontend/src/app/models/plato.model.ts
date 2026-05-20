@@ -21,5 +21,6 @@ export interface Plato {
   descripcion: string;
   precio: number;
   alergenos?: Alergeno[];
+  urlImagen?: string;
 }
 

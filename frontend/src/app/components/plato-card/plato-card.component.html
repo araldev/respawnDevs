@@ -1,7 +1,7 @@
 @if (plato()) {
   <div class="plato-card">
     <div class="plato-image">
-      <img src="https://via.placeholder.com/300x200" alt="Imagen del plato">
+      <img src="{{ plato()?.urlImagen }}" alt="Imagen del plato">
       @if (plato()?.id === 1) {
         <span class="recomendado">Recomendado</span>
       }

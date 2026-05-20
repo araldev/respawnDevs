@@ -22,6 +22,9 @@ public class Recetas {
     @Column(name = "url_imagen")
     private String urlImagen;
 
+    @Column(name = "precio")
+    private Double precio;
+
     @OneToMany(mappedBy = "receta", cascade = CascadeType.ALL)
     private List<RecetaIngrediente> ingredientes;
 
@@ -69,6 +72,14 @@ public class Recetas {
 
     public void setUrlImagen(String urlImagen) {
         this.urlImagen = urlImagen;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
 
     public List<RecetaIngrediente> getIngredientes() {
