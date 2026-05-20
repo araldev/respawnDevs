@@ -2,6 +2,12 @@ package com.example.RespawnDevs.Service;
 
 import org.springframework.stereotype.Service;
 
+import com.example.RespawnDevs.Repositorios.RecetaRepository;
+import com.example.RespawnDevs.Entidades.Recetas;
+
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class RecetasService {
     // -----------------------------------
