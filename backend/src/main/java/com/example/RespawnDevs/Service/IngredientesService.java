@@ -1,5 +1,11 @@
 package com.example.RespawnDevs.Service;
 
+import com.example.RespawnDevs.Repositorios.IngredienteRepository;
+import com.example.RespawnDevs.Entidades.Ingredientes;
+
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 @Service

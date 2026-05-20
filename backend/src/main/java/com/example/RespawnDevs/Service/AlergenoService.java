@@ -1,5 +1,8 @@
 package com.example.RespawnDevs.Service;
 
+import com.example.RespawnDevs.Repositorios.AlergenoRepository;
+import com.example.RespawnDevs.Entidades.Alergenos;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -25,15 +28,15 @@ public class AlergenoService {
     // Métodos
     // -----------------------------------
 
-    public List<Alergeno> getAllAlergenos() {
+    public List<Alergenos> getAllAlergenos() {
         return alergenoRepository.findAll();
     }
 
-    public Optional<Alergeno> getAlergenoById(Long id) {
+    public Optional<Alergenos> getAlergenoById(Long id) {
         return alergenoRepository.findById(id);
     }
 
-    public List<Alergeno> getAlergenosByRecetaId(Long recetaId) {
-        return recetaRepository.findAlergenosByRecetaId(recetaId);
+    public List<Alergenos> getAlergenosByRecetaId(Long recetaId) {
+        return alergenoRepository.findAlergenosByRecetaId(recetaId);
     }
 }
