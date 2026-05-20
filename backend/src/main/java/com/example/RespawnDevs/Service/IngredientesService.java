@@ -29,4 +29,8 @@ public class IngredientesService {
     public Optional<Ingrediente> getIngredienteById(Long id) {
         return ingredienteRepository.findById(id);
     }
+
+    public List<Ingrediente> getIngredientesByRecetaId(Long recetaId) {
+        return ingredienteRepository.findIngredientesByRecetaId(recetaId);
+    }
 }

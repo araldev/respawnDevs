@@ -33,7 +33,7 @@ public class AlergenoService {
         return alergenoRepository.findById(id);
     }
 
-    public List<Alergeno> getAlergenosByNombre(String nombre) {
-        return alergenoRepository.findByNombreContainingIgnoreCase(nombre);
+    public List<Alergeno> getAlergenosByRecetaId(Long recetaId) {
+        return recetaRepository.findAlergenosByRecetaId(recetaId);
     }
 }
