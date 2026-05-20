@@ -1,0 +1,8 @@
+<app-plato-search (search)="onSearch($event)"></app-plato-search>
+<div class="plato-list-container">
+  @for (plato of filteredPlatos(); track plato.id) {
+    <app-plato-card [platoInput]="plato"></app-plato-card>
+  } @empty {
+    <p>No se encontraron platos con ese nombre.</p>
+  }
+</div>
