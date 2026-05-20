@@ -1,21 +1,25 @@
 package com.example.RespawnDevs.Entidades;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "alergenos")
-public class Alergenos {
+@Table(name = "ingredientes")
+public class Ingredientes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100, name = "nombre")
+    @Column(nullable = false, name = "nombre")
     private String nombre;
     
     @Column(name = "descripcion")
     private String descripcion;
 
-    public Alergenos() {
+    @OneToMany(mappedBy = "ingrediente")
+    private List<IngredienteAlergeno> alergenos;
+
+    public Ingredientes() {
     }
 
     public Long getId() {
@@ -40,5 +44,13 @@ public class Alergenos {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public List<IngredienteAlergeno> getAlergenos() {
+        return alergenos;
+    }
+
+    public void setAlergenos(List<IngredienteAlergeno> alergenos) {
+        this.alergenos = alergenos;
     }
 }
