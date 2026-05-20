@@ -3,7 +3,7 @@ package com.example.RespawnDevs.Service;
 import org.springframework.stereotype.Service;
 
 @Service
-public class Ingredientes {
+public class IngredientesService {
     // -----------------------------------
     // Atributos
     // -----------------------------------
@@ -14,11 +14,23 @@ public class Ingredientes {
     // Constructores
     // -----------------------------------
 
-    public Ingredientes(IngredienteRepository ingredienteRepository) {
+    public IngredientesService(IngredienteRepository ingredienteRepository) {
         this.ingredienteRepository = ingredienteRepository;
     }
 
     // -----------------------------------
     // Métodos
     // -----------------------------------
+
+    public List<Ingrediente> getAllIngredientes() {
+        return ingredienteRepository.findAll();
+    }
+
+    public Optional<Ingrediente> getIngredienteById(Long id) {
+        return ingredienteRepository.findById(id);
+    }
+
+    public List<Ingrediente> getIngredientesByRecetaId(Long recetaId) {
+        return ingredienteRepository.findIngredientesByRecetaId(recetaId);
+    }
 }

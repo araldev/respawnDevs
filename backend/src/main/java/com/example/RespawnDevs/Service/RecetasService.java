@@ -21,4 +21,12 @@ public class RecetasService {
     // -----------------------------------
     // Métodos
     // -----------------------------------
+
+    public List<Receta> getAllRecetas() {
+        return recetaRepository.findAll();
+    }
+
+    public Optional<Receta> getRecetaById(Long id) {
+        return recetaRepository.findById(id);
+    }
 }

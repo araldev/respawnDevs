@@ -2,14 +2,19 @@ package com.example.RespawnDevs.Controllers;
 
 import com.example.RespawnDevs.Entidades.Alergenos;
 import com.example.RespawnDevs.Service.AlergenosService;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/alergenos")
-@CrossOrigin(origins = "*") // Permite que Angular se conecte sin errores de CORS
+@RequestMapping("/alergenos")
+@CrossOrigin(origins = "*")
 public class AlergenosController {
 
     private final AlergenosService alergenosService;
