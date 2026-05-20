@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TarjetaPlatos } from './components/tarjeta-platos/tarjeta-platos';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+   imports: [RouterOutlet, TarjetaPlatos],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

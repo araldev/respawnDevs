@@ -1,0 +1,27 @@
+<div class="grid">
+
+  @for (plato of platos; track plato.nombre) {
+
+    <div class="card">
+
+      <img [src]="plato.imagen" alt="plato">
+
+      <h2>{{ plato.nombre }}</h2>
+
+      <p>{{ plato.descripcion }}</p>
+
+      <div class="alergenos">
+        @for (a of plato.alergenos; track a) {
+          <span>{{ a }}</span>
+        }
+      </div>
+
+      <div class="precio">
+        💰 {{ plato.precio }} €
+      </div>
+
+    </div>
+
+  }
+
+</div>
