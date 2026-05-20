@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "receta")
+@Table(name = "recetas")
 public class Recetas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +25,11 @@ public class Recetas {
     @OneToMany(mappedBy = "receta", cascade = CascadeType.ALL)
     private List<RecetaIngrediente> ingredientes;
 
-    public Receta() {
+    // Constructor vacío obligatorio para JPA
+    public Recetas() {
     }
+
+    // --- GETTERS Y SETTERS ---
 
     public Long getId() {
         return id;
