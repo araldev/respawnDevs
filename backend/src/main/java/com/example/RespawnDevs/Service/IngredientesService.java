@@ -28,19 +28,19 @@ public class IngredientesService {
     // Métodos
     // -----------------------------------
 
-    public List<Ingrediente> getAllIngredientes() {
+    public List<Ingredientes> getAllIngredientes() {
         return ingredienteRepository.findAll();
     }
 
-    public Optional<Ingrediente> getIngredienteById(Long id) {
+    public Optional<Ingredientes> getIngredienteById(Long id) {
         return ingredienteRepository.findById(id);
     }
 
-    public List<Ingrediente> getIngredientesByRecetaId(Long recetaId) {
+    public List<Ingredientes> getIngredientesByRecetaId(Long recetaId) {
         return ingredienteRepository.findIngredientesByRecetaId(recetaId);
     }
 
-    public Ingrediente saveIngrediente(Ingrediente ingrediente) {
+    public Ingredientes saveIngrediente(Ingredientes ingrediente) {
         return ingredienteRepository.save(ingrediente);
     }
 
@@ -48,8 +48,8 @@ public class IngredientesService {
         return ingredienteRepository.findById(id).isPresent();
     }
 
-    public Ingrediente deleteIngrediente(Long id) {
-        Optional<Ingrediente> ingredienteOptional = ingredienteRepository.findById(id);
+    public Ingredientes deleteIngrediente(Long id) {
+        Optional<Ingredientes> ingredienteOptional = ingredienteRepository.findById(id);
 
         if (ingredienteOptional.isPresent()) {
             ingredienteRepository.deleteById(id);

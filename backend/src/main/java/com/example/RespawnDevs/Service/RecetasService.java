@@ -28,11 +28,11 @@ public class RecetasService {
     // Métodos
     // -----------------------------------
 
-    public List<Receta> getAllRecetas() {
+    public List<Recetas> getAllRecetas() {
         return recetaRepository.findAll();
     }
 
-    public Optional<Receta> getRecetaById(Long id) {
+    public Optional<Recetas> getRecetaById(Long id) {
         return recetaRepository.findById(id);
     }
 }
