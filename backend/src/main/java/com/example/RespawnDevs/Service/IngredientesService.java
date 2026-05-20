@@ -33,4 +33,23 @@ public class IngredientesService {
     public List<Ingrediente> getIngredientesByRecetaId(Long recetaId) {
         return ingredienteRepository.findIngredientesByRecetaId(recetaId);
     }
+
+    public Ingrediente saveIngrediente(Ingrediente ingrediente) {
+        return ingredienteRepository.save(ingrediente);
+    }
+
+    public boolean existsById(Long id) {
+        return ingredienteRepository.findById(id).isPresent();
+    }
+
+    public Ingrediente deleteIngrediente(Long id) {
+        Optional<Ingrediente> ingredienteOptional = ingredienteRepository.findById(id);
+
+        if (ingredienteOptional.isPresent()) {
+            ingredienteRepository.deleteById(id);
+            return ingredienteOptional.get();
+        }
+
+        return null;
+    }
 }
