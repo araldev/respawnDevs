@@ -1,0 +1,48 @@
+.main-header {
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--surface-dim);
+  padding: var(--spacing-md) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-link {
+  text-decoration: none;
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.brand-serif {
+  font-family: var(--font-display);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.main-nav {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--on-surface-variant);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.main-nav a:hover, .main-nav a.active {
+  color: var(--primary);
+}

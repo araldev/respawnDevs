@@ -1,0 +1,91 @@
+.plato-card {
+  display: flex;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 700px;
+  font-family: sans-serif;
+  background-color: #fff;
+}
+
+.plato-image {
+  position: relative;
+  width: 300px;
+}
+
+.plato-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recomendado {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #e67e22;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.plato-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #e67e22;
+}
+
+.rating-score {
+  color: #777;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+p {
+  margin: 0;
+  color: #555;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.precio {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.add-to-cart {
+  background-color: #c85a19;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cart-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c85a19'%3E%3Cpath d='M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/%3E%3C/svg%3E") no-repeat center center;
+}

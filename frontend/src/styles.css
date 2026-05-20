@@ -1,1 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  /* Colors */
+  --surface: #fff8f3;
+  --surface-dim: #e2d9cf;
+  --on-surface: #1f1b15;
+  --on-surface-variant: #594139;
+  --outline: #8d7168;
+  --primary: #a73400;
+  --on-primary: #ffffff;
+  --secondary: #5f5e5e;
+  --background: #fff8f3;
+  --error: #ba1a1a;
+
+  /* Typography */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Be Vietnam Pro', sans-serif;
+
+  /* Rounded corners */
+  --rounded-sm: 0.25rem;
+  --rounded-md: 0.75rem;
+  --rounded-lg: 1rem;
+  --rounded-xl: 1.5rem;
+
+  /* Spacing */
+  --spacing-md: 24px;
+  --spacing-lg: 40px;
+
+  /* Shadows */
+  --shadow-l2: 0 4px 20px rgba(95, 94, 94, 0.04);
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin-top: 0;
+  color: var(--on-surface);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--rounded-lg);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(167, 52, 0, 0.2);
+}
+
+.card {
+  background: white;
+  border-radius: var(--rounded-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-l2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(95, 94, 94, 0.08);
+}
+
