@@ -3,8 +3,6 @@ package com.example.RespawnDevs.Controllers;
 import com.example.RespawnDevs.Entidades.Alergenos;
 import com.example.RespawnDevs.Service.AlergenosService;
 
-import jakarta.validation.Valid;
-
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -42,7 +40,7 @@ public class AlergenosController {
     }
 
     @PostMapping
-    public ResponseEntity<Alergenos> crear(@Valid @RequestBody Alergenos alergeno) {
+    public ResponseEntity<Alergenos> crear(@RequestBody Alergenos alergeno) {
 
         Alergenos guardado = alergenosService.saveAlergeno(alergeno);
         return ResponseEntity.status(201).body(guardado);

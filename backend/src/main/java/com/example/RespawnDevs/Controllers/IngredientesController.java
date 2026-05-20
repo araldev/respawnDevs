@@ -3,8 +3,6 @@ package com.example.RespawnDevs.Controllers;
 import com.example.RespawnDevs.Entidades.Ingredientes;
 import com.example.RespawnDevs.Service.IngredientesService;
 
-import jakarta.validation.Valid;
-
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -42,7 +40,7 @@ public class IngredientesController {
     }
 
     @PostMapping
-    public ResponseEntity<Ingredientes> crear(@Valid @RequestBody Ingredientes ingrediente) {
+    public ResponseEntity<Ingredientes> crear(@RequestBody Ingredientes ingrediente) {
 
         Ingredientes guardado = ingredientesService.saveIngrediente(ingrediente);
         return ResponseEntity.status(201).body(guardado);
