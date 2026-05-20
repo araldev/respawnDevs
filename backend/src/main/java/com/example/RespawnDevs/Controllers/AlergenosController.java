@@ -23,7 +23,7 @@ public class AlergenosController {
     private final AlergenoService alergenoService;
 
     public AlergenosController(AlergenoService alergenoService) {
-        this.alergenosService = alergenosService;
+        this.alergenoService = alergenoService;
     }
 
     @GetMapping
