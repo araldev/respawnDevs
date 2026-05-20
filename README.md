@@ -85,9 +85,17 @@ Este proyecto ha sido desarrollado en equipo por:
 
 ---
 
-## 🚀 Cómo ejecutar el proyecto
+## 🚀 Cómo ejecutar el proyecto completo
 
-### Frontend (Angular)
+Este proyecto se compone de tres partes: frontend (Angular), backend (Spring Boot) y base de datos. Es necesario ejecutar las tres para que la aplicación funcione correctamente.
+
+---
+
+### 🟧 1. Backend (Spring Boot)
+
+El backend es el encargado de gestionar la lógica del servidor y la conexión con la base de datos.
+
+📌 Para ejecutarlo:
+
 ```bash
-npm install
-ng serve
+mvn spring-boot:run
