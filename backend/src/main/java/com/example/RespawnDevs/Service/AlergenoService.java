@@ -39,4 +39,23 @@ public class AlergenoService {
     public List<Alergenos> getAlergenosByRecetaId(Long recetaId) {
         return alergenoRepository.findAlergenosByRecetaId(recetaId);
     }
+
+    public Alergenos saveAlergeno(Alergenos alergeno) {
+        return alergenoRepository.save(alergeno);
+    }
+
+    public boolean existsById(Long id) {
+        return alergenoRepository.existsById(id);
+    }
+
+    public Alergenos deleteAlergeno(Long id) {
+        Optional<Alergenos> alergeno = alergenoRepository.findById(id);
+        if (alergeno.isPresent()) {
+            alergenoRepository.deleteById(id);
+            return alergeno.get();
+        }
+        else {
+            return null;
+        }
+    }
 }

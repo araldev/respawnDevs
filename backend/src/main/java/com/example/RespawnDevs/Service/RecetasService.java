@@ -35,4 +35,23 @@ public class RecetasService {
     public Optional<Recetas> getRecetaById(Long id) {
         return recetaRepository.findById(id);
     }
+
+    public Recetas saveReceta(Recetas receta) {
+        return recetaRepository.save(receta);
+    }
+
+    public boolean existsById(Long id) {
+        return recetaRepository.findById(id).isPresent();
+    }
+
+    public Recetas deleteReceta(Long id) {
+        Optional<Recetas> recetaOptional = recetaRepository.findById(id);
+
+        if (recetaOptional.isPresent()) {
+            recetaRepository.deleteById(id);
+            return recetaOptional.get();
+        }
+
+        return null;
+    }
 }
