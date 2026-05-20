@@ -1,6 +1,7 @@
 package com.example.RespawnDevs.Controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.RespawnDevs.Service.RecetasService;
+import com.example.RespawnDevs.Entidades.Recetas;
 
 @RestController
 @RequestMapping("/recetas")
@@ -25,18 +29,18 @@ public class RecetasController {
 
     @GetMapping
     public List<Recetas> obtenerTodo() {
-        return recetasService.getRecetas();
+        return recetasService.getAllRecetas();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Recetas> obtenerPorId(@PathVariable Long id) {
-        Recetas receta = recetasService.getRecetasById(id);
+        Optional<Recetas> receta = recetasService.getRecetaById(id);
 
-        if (receta == null) {
+        if (receta.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.ok(receta);
+        return ResponseEntity.ok(receta.get());
     }
 
     @PostMapping
