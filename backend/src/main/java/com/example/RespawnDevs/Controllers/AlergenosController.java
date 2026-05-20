@@ -1,7 +1,7 @@
 package com.example.RespawnDevs.Controllers;
 
 import com.example.RespawnDevs.Entidades.Alergenos;
-import com.example.RespawnDevs.Service.AlergenosService;
+import com.example.RespawnDevs.Service.AlergenoService;
 
 import java.util.List;
 
@@ -20,21 +20,21 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 public class AlergenosController {
 
-    private final AlergenosService alergenosService;
+    private final AlergenoService alergenoService;
 
-    public AlergenosController(AlergenosService alergenosService) {
+    public AlergenosController(AlergenoService alergenoService) {
         this.alergenosService = alergenosService;
     }
 
     @GetMapping
     public List<Alergenos> obtenerTodos() {
-        return alergenosService.getAllAlergenos();
+        return alergenoService.getAllAlergenos();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Alergenos> obtenerPorId(@PathVariable Long id) {
 
-        return alergenosService.getAlergenoById(id)
+        return alergenoService.getAlergenoById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -42,18 +42,18 @@ public class AlergenosController {
     @PostMapping
     public ResponseEntity<Alergenos> crear(@RequestBody Alergenos alergeno) {
 
-        Alergenos guardado = alergenosService.saveAlergeno(alergeno);
+        Alergenos guardado = alergenoService.saveAlergeno(alergeno);
         return ResponseEntity.status(201).body(guardado);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
 
-        if (!alergenosService.existsById(id)) {
+        if (!alergenoService.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
 
-        alergenosService.deleteAlergeno(id);
+        alergenoService.deleteAlergeno(id);
         return ResponseEntity.noContent().build();
     }
 }
