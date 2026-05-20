@@ -4,25 +4,25 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "receta_ingredientes")
-public class RecetaIngrediente {
+@Table(name = "ingrediente_alergenos")
+public class IngredienteAlergeno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "receta_id")
-    @JsonIgnore 
-    private Recetas receta;
-
-    @ManyToOne
     @JoinColumn(name = "ingrediente_id")
+    @JsonIgnore
     private Ingredientes ingrediente;
 
-    @Column(name = "cantidad")
-    private String cantidad;
+    @ManyToOne
+    @JoinColumn(name = "alergeno_id")
+    private Alergenos alergeno;
 
-    public RecetaIngrediente() {
+    @Column(name = "es_traza")
+    private Boolean esTraza = false;
+
+    public IngredienteAlergeno() {
     }
 
     public Long getId() {
@@ -33,14 +33,6 @@ public class RecetaIngrediente {
         this.id = id;
     }
 
-    public Recetas getReceta() {
-        return receta;
-    }
-
-    public void setReceta(Recetas receta) {
-        this.receta = receta;
-    }
-
     public Ingredientes getIngrediente() {
         return ingrediente;
     }
@@ -49,11 +41,19 @@ public class RecetaIngrediente {
         this.ingrediente = ingrediente;
     }
 
-    public String getCantidad() {
-        return cantidad;
+    public Alergenos getAlergeno() {
+        return alergeno;
     }
 
-    public void setCantidad(String cantidad) {
-        this.cantidad = cantidad;
+    public void setAlergeno(Alergenos alergeno) {
+        this.alergeno = alergeno;
+    }
+
+    public Boolean getEsTraza() {
+        return esTraza;
+    }
+
+    public void setEsTraza(Boolean esTraza) {
+        this.esTraza = esTraza;
     }
 }
