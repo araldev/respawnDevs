@@ -6,5 +6,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IngredienteRepository extends JpaRepository<Ingredientes, Long> {
-    
+    @Query("""
+        SELECT RecetaIngrediente.ingrediente
+        FROM RecetaIngrediente
+        WHERE RecetaIngrediente.receta.id = :recetaId
+    """)
+    List<Ingredientes> findIngredientesByRecetaId(@Param("recetaId") Long recetaId);
 }
