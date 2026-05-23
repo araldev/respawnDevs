@@ -1,8 +1,61 @@
 <app-plato-search (search)="onSearch($event)"></app-plato-search>
-<div class="plato-list-container">
-  @for (plato of filteredPlatos(); track plato.id) {
-    <app-plato-card [platoInput]="plato"></app-plato-card>
-  } @empty {
-    <p>No se encontraron platos con ese nombre.</p>
-  }
+
+<div class="alergeno-filter">
+  <span class="alergeno-filter-label">Excluir alérgenos:</span>
+  <div class="alergeno-filter-chips">
+    @for (al of alergenosDisponibles(); track al.id) {
+      <button class="alergeno-chip" [class.active]="excludedAlergenoIds().has(al.id)"
+              (click)="toggleAlergeno(al.id)">
+        {{ al.nombre }}
+        @if (excludedAlergenoIds().has(al.id)) {
+          <span class="chip-cross">✕</span>
+        }
+      </button>
+    }
+  </div>
+</div>
+
+<div class="plato-list-layout">
+  <div class="plato-list-container">
+    @for (plato of filteredPlatos(); track plato.id) {
+      <app-plato-card [plato]="plato" (addToCart)="addToCart($event)"></app-plato-card>
+    } @empty {
+      <p>No se encontraron platos con ese nombre.</p>
+    }
+  </div>
+
+  <aside class="cart-sidebar">
+    <h3>Carrito</h3>
+
+    @if (cartService.items().length === 0) {
+      <p class="cart-empty">El carrito está vacío.</p>
+    }
+
+    <div class="cart-items">
+      @for (item of cartService.items(); track item.plato.id) {
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <span class="cart-item-name">{{ item.plato.nombre }}</span>
+            <span class="cart-item-price">{{ (item.plato.precio * item.quantity).toFixed(2) }}€</span>
+          </div>
+          <div class="cart-item-controls">
+            <button class="qty-btn" (click)="cartService.decrement(item.plato.id)">−</button>
+            <span class="qty-value">{{ item.quantity }}</span>
+            <button class="qty-btn" (click)="cartService.increment(item.plato.id)">+</button>
+            <button class="cart-item-remove" (click)="cartService.remove(item.plato.id)">✕</button>
+          </div>
+        </div>
+      }
+    </div>
+
+    @if (cartService.items().length > 0) {
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total</span>
+          <span class="cart-total-price">{{ cartService.total().toFixed(2) }}€</span>
+        </div>
+        <button class="btn-clear" (click)="cartService.clear()">Vaciar carrito</button>
+      </div>
+    }
+  </aside>
 </div>

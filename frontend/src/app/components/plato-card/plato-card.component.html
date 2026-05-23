@@ -1,26 +1,28 @@
-@if (plato()) {
-  <div class="plato-card">
-    <div class="plato-image">
-      <img src="{{ plato()?.urlImagen }}" alt="Imagen del plato">
-      @if (plato()?.id === 1) {
-        <span class="recomendado">Recomendado</span>
-      }
+<div class="plato-card">
+  <div class="plato-image">
+    <img [src]="plato().urlImagen" alt="Imagen del plato">
+    @if (plato().id === 1) {
+      <span class="recomendado">Recomendado</span>
+    }
+  </div>
+  <div class="plato-info">
+    <div class="rating">
+      <span class="rating-stars">
+        @for (s of stars(plato().valoracion ?? 0); track $index) {
+          <span [class.star-filled]="s === '★'" [class.star-empty]="s === '☆'">{{ s }}</span>
+        }
+      </span>
+      <span class="rating-score">{{ plato().valoracion?.toFixed(1) }}</span>
     </div>
-    <div class="plato-info">
-      <div class="rating">
-        <span>★★★★★</span>
-        <span class="rating-score">4.8 (124)</span>
-      </div>
-      <h2>{{ plato()?.nombre }}</h2>
-      <p>{{ plato()?.descripcion }}</p>
-      <app-alergenos [alergenos]="plato()?.alergenos || []"></app-alergenos>
-      <div class="footer">
-        <span class="precio">{{ plato()?.precio }}€</span>
-        <button class="add-to-cart">
-          <span class="cart-icon"></span>
-          Añadir al carrito
-        </button>
-      </div>
+    <h2>{{ plato().nombre }}</h2>
+    <p>{{ plato().descripcion }}</p>
+    <app-alergenos [alergenos]="plato().alergenos || []"></app-alergenos>
+    <div class="footer">
+      <span class="precio">{{ plato().precio }}€</span>
+      <button class="add-to-cart" (click)="addToCart.emit(plato())">
+        <span class="cart-icon"></span>
+        Añadir al carrito
+      </button>
     </div>
   </div>
-}
+</div>

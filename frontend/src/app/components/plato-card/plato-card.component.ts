@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Plato } from '../../models/plato.model';
 import { AlergenosComponent } from '../alergenos/alergenos.component';
 import { CommonModule } from '@angular/common';
@@ -11,9 +11,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./plato-card.component.css']
 })
 export class PlatoCardComponent {
-  plato = signal<Plato | undefined>(undefined);
+  plato = input.required<Plato>();
+  addToCart = output<Plato>();
 
-  @Input() set platoInput(plato: Plato) {
-    this.plato.set(plato);
+  stars(valoracion: number): string[] {
+    const full = Math.round(valoracion);
+    return Array.from({ length: 5 }, (_, i) => i < full ? '★' : '☆');
   }
 }

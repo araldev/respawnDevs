@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Alergeno } from '../../models/alergeno.model';
 
 @Component({
   selector: 'app-alergenos',
@@ -9,40 +10,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './alergenos.component.css'
 })
 export class AlergenosComponent {
-  @Input() alergenos: string[] = [];
+  alergenos = input<Alergeno[]>([]);
 
-  getIcon(alergeno: string): string {
-    switch (alergeno.toLowerCase()) {
-      case 'gluten':
-        return 'assets/icons/gluten.svg';
-      case 'crustaceos':
-        return 'assets/icons/crustaceos.svg';
-      case 'huevos':
-        return 'assets/icons/huevos.svg';
-      case 'pescado':
-        return 'assets/icons/pescado.svg';
-      case 'cacahuetes':
-        return 'assets/icons/cacahuetes.svg';
-      case 'soja':
-        return 'assets/icons/soja.svg';
-      case 'lacteos':
-        return 'assets/icons/lacteos.svg';
-      case 'frutos de cascara':
-        return 'assets/icons/frutos-de-cascara.svg';
-      case 'apio':
-        return 'assets/icons/apio.svg';
-      case 'mostaza':
-        return 'assets/icons/mostaza.svg';
-      case 'sesamo':
-        return 'assets/icons/sesamo.svg';
-      case 'sulfitos':
-        return 'assets/icons/sulfitos.svg';
-      case 'altramuces':
-        return 'assets/icons/altramuces.svg';
-      case 'moluscos':
-        return 'assets/icons/moluscos.svg';
-      default:
-        return '';
-    }
+  getIcon(alergeno: Alergeno): string {
+    const name = alergeno.nombre
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    return `icons/${name}.svg`;
   }
 }

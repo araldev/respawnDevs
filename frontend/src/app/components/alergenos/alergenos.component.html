@@ -1,8 +1,8 @@
 <div class="alergenos-container">
   <span>ALÉRGENOS:</span>
-  @for (alergeno of alergenos; track alergeno) {
-    <div class="alergeno-item" [title]="alergeno">
-      <img [src]="getIcon(alergeno)" [alt]="alergeno" class="alergeno-icon">
+  @for (alergeno of alergenos(); track alergeno.id) {
+    <div class="alergeno-item" [title]="alergeno.nombre">
+      <img [src]="getIcon(alergeno)" [alt]="alergeno.nombre" class="alergeno-icon">
     </div>
   }
 </div>
