@@ -1,7 +1,7 @@
 package com.example.RespawnDevs.Service;
 
 import com.example.RespawnDevs.Repositorios.AlergenoRepository;
-import com.example.RespawnDevs.Entidades.Alergenos;
+import com.example.RespawnDevs.Entidades.Alergeno;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,19 +28,19 @@ public class AlergenoService {
     // Métodos
     // -----------------------------------
 
-    public List<Alergenos> getAllAlergenos() {
+    public List<Alergeno> getAllAlergenos() {
         return alergenoRepository.findAll();
     }
 
-    public Optional<Alergenos> getAlergenoById(Long id) {
+    public Optional<Alergeno> getAlergenoById(Long id) {
         return alergenoRepository.findById(id);
     }
 
-    public List<Alergenos> getAlergenosByRecetaId(Long recetaId) {
+    public List<Alergeno> getAlergenosByRecetaId(Long recetaId) {
         return alergenoRepository.findAlergenosByRecetaId(recetaId);
     }
 
-    public Alergenos saveAlergeno(Alergenos alergeno) {
+    public Alergeno saveAlergeno(Alergeno alergeno) {
         return alergenoRepository.save(alergeno);
     }
 
@@ -48,8 +48,8 @@ public class AlergenoService {
         return alergenoRepository.existsById(id);
     }
 
-    public Alergenos deleteAlergeno(Long id) {
-        Optional<Alergenos> alergeno = alergenoRepository.findById(id);
+    public Alergeno deleteAlergeno(Long id) {
+        Optional<Alergeno> alergeno = alergenoRepository.findById(id);
         if (alergeno.isPresent()) {
             alergenoRepository.deleteById(id);
             return alergeno.get();

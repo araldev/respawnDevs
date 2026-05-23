@@ -1,9 +1,11 @@
 package com.example.RespawnDevs.Controllers;
 
-import com.example.RespawnDevs.Entidades.Alergenos;
+import com.example.RespawnDevs.Entidades.Alergeno;
 import com.example.RespawnDevs.Service.AlergenoService;
+import com.example.RespawnDevs.Service.AlergenoMapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,23 +29,26 @@ public class AlergenosController {
     }
 
     @GetMapping
-    public List<Alergenos> obtenerTodos() {
-        return alergenoService.getAllAlergenos();
+    public List<Alergeno> obtenerTodos() {
+        return alergenoService.getAllAlergenos().stream()
+                .map(AlergenoMapper::fromEntity)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Alergenos> obtenerPorId(@PathVariable Long id) {
+    public ResponseEntity<Alergeno> obtenerPorId(@PathVariable Long id) {
 
         return alergenoService.getAlergenoById(id)
+                .map(AlergenoMapper::fromEntity)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Alergenos> crear(@RequestBody Alergenos alergeno) {
+    public ResponseEntity<Alergeno> crear(@RequestBody Alergeno alergeno) {
 
-        Alergenos guardado = alergenoService.saveAlergeno(alergeno);
-        return ResponseEntity.status(201).body(guardado);
+        Alergeno guardado = alergenoService.saveAlergeno(alergeno);
+        return ResponseEntity.status(201).body(AlergenoMapper.fromEntity(guardado));
     }
 
     @DeleteMapping("/{id}")

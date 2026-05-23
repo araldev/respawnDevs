@@ -1,21 +1,32 @@
 package com.example.RespawnDevs.Entidades;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "alergenos")
-public class Alergenos {
+public class Alergeno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 100, name = "nombre")
     private String nombre;
-    
+
     @Column(name = "descripcion")
     private String descripcion;
 
-    public Alergenos() {
+    public Alergeno() {
+    }
+
+    public Alergeno(Long id, String nombre, String descripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 
     public Long getId() {

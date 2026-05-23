@@ -17,7 +17,7 @@ public class IngredienteAlergeno {
 
     @ManyToOne
     @JoinColumn(name = "alergeno_id")
-    private Alergenos alergeno;
+    private Alergeno alergeno;
 
     @Column(name = "es_traza")
     private Boolean esTraza = false;
@@ -41,11 +41,11 @@ public class IngredienteAlergeno {
         this.ingrediente = ingrediente;
     }
 
-    public Alergenos getAlergeno() {
+    public Alergeno getAlergeno() {
         return alergeno;
     }
 
-    public void setAlergeno(Alergenos alergeno) {
+    public void setAlergeno(Alergeno alergeno) {
         this.alergeno = alergeno;
     }
 

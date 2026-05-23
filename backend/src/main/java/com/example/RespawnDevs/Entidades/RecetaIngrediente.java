@@ -14,7 +14,7 @@ public class RecetaIngrediente {
     @ManyToOne
     @JoinColumn(name = "receta_id")
     @JsonIgnore
-    private Recetas receta;
+    private Plato receta;
 
     @ManyToOne
     @JoinColumn(name = "ingrediente_id")
@@ -28,8 +28,8 @@ public class RecetaIngrediente {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public Recetas getReceta() { return receta; }
-    public void setReceta(Recetas receta) { this.receta = receta; }
+    public Plato getReceta() { return receta; }
+    public void setReceta(Plato receta) { this.receta = receta; }
 
     public Ingredientes getIngrediente() { return ingrediente; }
     public void setIngrediente(Ingredientes ingrediente) { this.ingrediente = ingrediente; }
