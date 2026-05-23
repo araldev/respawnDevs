@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>Platos Sugeridos</h2>
+
+  @if (sugerencias().length === 0) {
+    <div class="empty">
+      <p>Todavía no hay sugerencias.</p>
+      <a routerLink="/crear" class="btn-link">Sugerir un plato</a>
+    </div>
+  }
+
+  <div class="sugerencias-grid">
+    @for (sug of sugerencias(); track sug.id) {
+      <div class="sugerencia-card">
+        @if (sug.urlImagen) {
+          <div class="card-img">
+            <img [src]="sug.urlImagen" alt="">
+          </div>
+        }
+        <div class="card-body">
+          <h3>{{ sug.nombre }}</h3>
+          <p class="desc">{{ sug.descripcion }}</p>
+
+          @if (sug.ingredientes.length > 0) {
+            <div class="section">
+              <strong>Ingredientes:</strong>
+              <div class="tags">
+                @for (ing of sug.ingredientes; track ing) {
+                  <span class="tag">{{ ing }}</span>
+                }
+              </div>
+            </div>
+          }
+
+          @if (sug.instrucciones) {
+            <div class="section">
+              <strong>Instrucciones:</strong>
+              <p class="instrucciones">{{ sug.instrucciones }}</p>
+            </div>
+          }
+
+          @if (sug.alergenos.length > 0) {
+            <div class="section">
+              <strong>Alérgenos:</strong>
+              <div class="tags">
+                @for (al of sug.alergenos; track al) {
+                  <span class="tag alergeno">{{ al }}</span>
+                }
+              </div>
+            </div>
+          }
+
+          <div class="card-footer">
+            <span class="precio">{{ sug.precio.toFixed(2) }}€</span>
+            <button class="btn-delete" (click)="delete(sug.id)">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

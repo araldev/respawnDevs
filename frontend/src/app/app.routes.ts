@@ -9,9 +9,9 @@ export const routes: Routes = [
     path: 'crear', 
     loadComponent: () => import('./components/plato-form/plato-form.component').then(m => m.PlatoFormComponent) 
   },
-  // { 
-  //   path: 'plato/:id', 
-  //   loadComponent: () => import('./components/plato-detail/plato-detail.component').then(m => m.PlatoDetailComponent) 
-  // },
+  { 
+    path: 'sugerencias', 
+    loadComponent: () => import('./components/plato-sugerencias/plato-sugerencias.component').then(m => m.PlatoSugerenciasComponent) 
+  },
   { path: '**', redirectTo: '' }
 ];

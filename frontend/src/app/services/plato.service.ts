@@ -2,6 +2,8 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Plato } from '../models/plato.model';
+import { PlatoSugerido } from '../models/plato-sugerido.model';
+import { Alergeno } from '../models/alergeno.model';
 import { API_ENDPOINTS } from '../app.endpoints';
 
 @Injectable({
@@ -25,5 +27,21 @@ export class PlatoService {
 
   getPlatosByAlergeno(alergeno: string): Observable<Plato[]> {
     return this.http.get<Plato[]>(`${this.baseUrl}${API_ENDPOINTS.PLATOS.BY_ALERGENO(alergeno)}`);
+  }
+
+  getSugerencias(): Observable<PlatoSugerido[]> {
+    return this.http.get<PlatoSugerido[]>(`${this.baseUrl}${API_ENDPOINTS.SUGERENCIAS.LIST}`);
+  }
+
+  createSugerencia(plato: PlatoSugerido): Observable<PlatoSugerido> {
+    return this.http.post<PlatoSugerido>(`${this.baseUrl}${API_ENDPOINTS.SUGERENCIAS.CREATE}`, plato);
+  }
+
+  deleteSugerencia(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}${API_ENDPOINTS.SUGERENCIAS.DELETE(id)}`);
+  }
+
+  getAlergenos(): Observable<Alergeno[]> {
+    return this.http.get<Alergeno[]>(`${this.baseUrl}${API_ENDPOINTS.ALERGENOS.LIST}`);
   }
 }
