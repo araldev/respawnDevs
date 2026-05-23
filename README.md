@@ -14,6 +14,15 @@ Asegúrate de tener instalado lo siguiente:
 
 Sigue estos pasos para poner en marcha la aplicación.
 
+### Opcion rapida (script)
+
+Desde la carpeta raiz del proyecto, ejecuta:
+
+```bash
+chmod +x start.sh
+./start.sh
+```
+
 ### 1. Levantar el Backend (Spring Boot)
 
 El backend es una aplicación de Spring Boot.
